@@ -85,18 +85,18 @@ By default, Chef InSpec authentication is configured in `~/.azure/credentials` w
 
 ```ini
 [<subscriptionId>]
-client_id = "<clientId>"
-client_secret = "<clientSecret>"
-tenant_id = "<tenantId>"
+client_id = <clientId>
+client_secret = <clientSecret>
+tenant_id = <tenantId>
 ```
 
 Using the values in the above example, we would have this in `~/.azure/credentials`:
 
 ```ini
 [99999999-0000-1111-2222-333333333333]
-client_id = "77777777-0000-1111-2222-333333333333"
-client_secret = "88888888-0000-1111-2222-333333333333"
-tenant_id = "12345678-1234-1234-1234-123123123123"
+client_id = 77777777-0000-1111-2222-333333333333
+client_secret = 88888888-0000-1111-2222-333333333333
+tenant_id = 12345678-1234-1234-1234-123123123123
 ```
 
 #### TODO: Run the Azure credentials check script again
