@@ -18,9 +18,48 @@ This is a special form of authentication that may not be available to you if you
 
 [How to set up a Service Principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
 
-#### TODO: Run the Azure credentials check script and expect it to fail
+#### Run the Azure credentials check script and expect it to fail
 
 This simply helps us understand what it is that we will be doing. When these checks pass, we're ready to go!
+
+Via Bash or Git client:
+
+```bash
+git clone https://github.com/sbonds/azure-exercises.git
+cd azure-exercises/local-tests
+export SUBSCRIPTION_ID=<your Azure subscription ID>
+inspec exec az-creds
+```
+
+Or via PowerShell:
+
+```powershell
+git clone https://github.com/sbonds/azure-exercises.git
+cd azure-exercises/local-tests
+$Env:SUBSCRIPTION_ID=<your Azure subscription ID>
+inspec exec az-creds
+```
+
+At this point, a failure like the following is expected. If you get odd errors that differ from this, there may be something else wrong:
+
+```output
+$ inspec exec az-creds
+#< CLIXML
+
+Profile: Check local Azure Credentials (az-creds)
+Version: 0.1.0
+Target:  local://
+
+  File C:\Users\testuser/.azure/credentials
+     [FAIL]  should exist
+     expected File C:\Users\testuser/.azure/credentials to exist
+     [FAIL]  content should match /99999999-0000-1111-2222-333333333333/
+     expected nil to match /99999999-0000-1111-2222-333333333333/
+  INI C:\Users\testuser/.azure/credentials
+     [SKIP]  Can't find file: C:\Users\testuser/.azure/credentials
+
+Test Summary: 0 successful, 2 failures, 1 skipped
+```
 
 #### Log in via `az` tool
 
@@ -99,7 +138,27 @@ client_secret = 88888888-0000-1111-2222-333333333333
 tenant_id = 12345678-1234-1234-1234-123123123123
 ```
 
-#### TODO: Run the Azure credentials check script again
+#### Run the Azure credentials check script again
+
+```bash
+cd azure-exercises/local-tests
+export SUBSCRIPTION_ID=<your Azure subscription ID>
+inspec exec az-creds
+```
+
+Or via PowerShell:
+
+```powershell
+cd azure-exercises/local-tests
+$Env:SUBSCRIPTION_ID=<your Azure subscription ID>
+inspec exec az-creds
+```
+
+The tests should all pass and not be skipped this time:
+
+```output
+Test Summary: 5 successful, 0 failures, 0 skipped
+```
 
 ## Create a new virtual network
 
