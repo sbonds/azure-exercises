@@ -3,8 +3,8 @@
 title "Check Virtual Network creation"
 
 control 'resource_group' do
-  describe azurerm_resource_groups do
-    its('names') { should include 'myResourceGroup' }
+  describe azurerm_resource_groups.where(name: 'myResourceGroup') do
+    it { should exist }
   end
 end
 
