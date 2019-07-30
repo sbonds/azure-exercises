@@ -8,3 +8,12 @@ control 'resource_group' do
   end
 end
 
+control 'virtual_machines' do
+  describe azurerm_virtual_machine(resource_group: 'myResourceGroup', name: 'myVm1') do
+    it { should exist }
+  end
+  describe azurerm_virtual_machine(resource_group: 'myResourceGroup', name: 'myVm2') do
+    it { should exist }
+  end
+end
+

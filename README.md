@@ -163,3 +163,29 @@ Test Summary: 5 successful, 0 failures, 0 skipped
 ## Create a new virtual network
 
 [Microsoft: Quickstart: Create a virtual network using the Azure portal](https://docs.microsoft.com/en-us/azure/virtual-network/quick-create-portal)
+
+When you think it's completed run:
+
+```bash
+cd azure-exercises/tests
+export SUBSCRIPTION_ID=<your Azure subscription ID>
+inspec exec virtual-network -t azure://$SUBSCRIPTION_ID
+```
+
+Or via PowerShell:
+
+```powershell
+cd azure-exercises/tests
+$Env:SUBSCRIPTION_ID=<your Azure subscription ID>
+inspec exec virtual-network -t azure://$SUBSCRIPTION_ID
+```
+
+```output
+  [PASS]  resource_group: Resource Groups with name == "myResourceGroup"
+     [PASS]  Resource Groups with name == "myResourceGroup" should exist
+  [PASS]  virtual_machines: 'myVm1' Virtual Machine
+     [PASS]  'myVm1' Virtual Machine should exist
+     [PASS]  'myVm2' Virtual Machine should exist
+```
+
+Later on I'll just give you the name of the inspec test so filling in the `-t azure://$SUBSCRIPTION_ID` with the right ID will be up to you.
