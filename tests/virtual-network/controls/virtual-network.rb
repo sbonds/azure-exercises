@@ -8,6 +8,14 @@ control 'resource_group' do
   end
 end
 
+control 'virtual_network' do
+  describe azurerm_virtual_network(resource_group: 'myResourceGroup', name: 'myVirtualNetwork') do
+    it { should exist }
+    its('subnets') { should eq ['default'] }
+  end
+end
+
+# TODO: Check that the virtual machines' NICs are in the above Virtual Network
 control 'virtual_machines' do
   describe azurerm_virtual_machine(resource_group: 'myResourceGroup', name: 'myVm1') do
     it { should exist }
@@ -16,4 +24,3 @@ control 'virtual_machines' do
     it { should exist }
   end
 end
-
