@@ -1,0 +1,13 @@
+name: az-creds
+title: Check Virtual Network creation
+maintainer: Steve Bonds
+copyright: Steve Bonds
+copyright_email: sbonds@gmail.com
+license: GPL3
+summary: Checks virtual network exercise results from https://docs.microsoft.com/en-us/azure/virtual-network
+version: 0.1.0
+depends:
+  - name: inspec-azure
+    url: https://github.com/inspec/inspec-azure/archive/v1.3.0.tar.gz
+supports:
+  platform: azure
